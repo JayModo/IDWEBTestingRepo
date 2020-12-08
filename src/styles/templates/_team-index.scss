@@ -1,0 +1,202 @@
+.module-team-wrap {
+  @include grid(space-evenly, stretch, row, wrap);
+  background-color: #2e2e56;
+  padding: 2.5rem;
+}
+
+.team-single {
+  display: block;
+  position: relative;
+  filter: grayscale(1);
+  padding: 1rem;
+  width: 22.333%;
+
+  &::before {
+    content: '';
+    display: block;
+    border-radius: 5%;
+    position: absolute;
+    width: calc(70% - 2rem);
+    height: calc(67% - 2rem);
+    z-index: 0;
+  //  background: linear-gradient(180deg, $copper 0%, transparentize($grey, 0.4) 66%, $white 100%);
+    // box-shadow: 0 3px 6px transparentize($black, 0.9);
+    @include transition(all 175ms ease-out);
+  }
+
+  h2 {
+    position: relative;
+    z-index: 2;
+    color: #c6a53a;
+    font-size: 1.25rem;
+    @include fontBold(true);
+    line-height: 1;
+    padding: 0.5rem 4rem;
+    margin: 0;
+    letter-spacing: 0.2ex;
+    @include transition(all 175ms ease-out);
+    transform-origin: left bottom;
+  }
+
+   h3 {
+    position: relative;
+    z-index: 2;
+   color: #c6a53a;
+    font-size: 1.15rem;
+    @include fontBold(false);
+    line-height: 1;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    letter-spacing: 0.2ex;
+    @include transition(all 175ms ease-out);
+    transform-origin: left bottom;
+  }
+
+  &:hover {
+    filter: grayscale(0);
+    .team-bg {
+      transform: scale(0.95);
+      &::before {
+        opacity: 0.666;
+        @include transition(all 500ms ease-out 500ms);
+      }
+    }
+
+    &::before {
+      opacity: 0.666;
+
+    }
+
+    h2 {
+      color: $copper;
+      transform: scale(1.1);
+      @include transition(all 250ms ease-in);
+    }
+  }
+}
+
+.team-bg {
+  position: relative;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%;
+  padding-left: 11.6rem;
+  z-index: 1;
+  max-width: 12rem;
+  min-height: 11rem;
+  padding-top: 65.25%;
+  background-size: cover;
+  background-position: center center;
+  @include transition(all 175ms ease-out);
+  transform-origin: left top;
+
+  &::before {
+    content: 'More Info';
+    @include fontBold();
+    display: block;
+    color: $navy;
+    position: absolute;
+    right: -2.5%;
+    top: 50%;
+    font-size: 1rem;
+    text-transform: uppercase;
+    line-height: 1;
+    opacity: 0;
+    transform: rotate(90deg);
+    transform-origin: right;
+    @include transition(all 75ms ease-out);
+  }
+
+  img {
+    display: none;
+  }
+}
+
+.module-pricing {
+  @include grid(center, center);
+  background-color: $greyLight;
+
+  h2 {
+    color: $navy;
+    margin-bottom: 2em;
+  }
+
+  h3 {
+    color: $navy;
+    letter-spacing: 0.2ex;
+    @include fontBold(false);
+    margin-bottom: 2rem;
+  }
+
+  p {
+    color: $navy;
+  }
+
+  .attachment-large {
+    width: 60%;
+  }
+}
+
+.pricing-content {
+  padding: 2rem 3.5rem;
+  width: 40%;
+
+  .wpcf7-form {
+    padding: 0;
+    margin-top: 1rem;
+
+    button {
+      float: none;
+    }
+  }
+}
+
+/**
+  Responsive Breakpoints
+  ---------------------------------------------------------------------- */
+@media(max-width: 960px) {
+  .module-team-wrap {
+    padding: 0 1rem 2rem 1rem;
+  }
+
+  .team-single {
+    width: 50%;
+
+    h2 {
+      padding: 1rem;
+    }
+  }
+
+  .module-pricing {
+    @include grid(center, center, column-reverse);
+
+    .attachment-large {
+      width: 100%;
+    }
+  }
+
+  .pricing-content {
+    width: 100%;
+    padding: 2rem;
+  }
+}
+
+@media(max-width: 600px) {
+  .module-team-wrap {
+    padding: 0;
+  }
+
+  .team-single {
+    width: 100%;
+  }
+
+  .team-bg::before {
+    content: 'Loading...';
+    transition-delay: 0s !important;
+  }
+
+  .module-pricing h2 {
+    font-size: 1.5em;
+  }
+}

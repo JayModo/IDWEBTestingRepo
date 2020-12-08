@@ -1,0 +1,78 @@
+// 
+.module-team-details {
+  @include grid(center, center);
+  
+
+  .attachment-large {
+ float: left;
+    width:  14rem;
+    height: 16rem;
+    object-fit: cover;
+  border-radius: 50%;
+  padding-bottom: 1rem;
+  
+  }
+
+  h1 {
+    position: relative;
+    margin-bottom: 2em;
+    text-align: center;
+  }
+
+
+}
+
+
+
+.name-title{
+   flex: auto;
+   position: relative;
+   font-size: 1.50rem;
+   padding-top: 5rem;
+ text-align: center;
+ justify-content: flex-end;
+}
+
+
+
+.column {
+ float: left;
+ width: 50%;
+ padding: 1rem;
+ height: 300px;
+ text-align: center;
+//  padding-right: 5px;
+}
+
+/* Clear floats after the columns */
+.row {
+    display: table;
+    content: "";
+    clear: both;
+}
+ #border-line{
+   background-color: ivory;
+ }
+
+.team-details-info {
+  color: $navy;
+  // padding: 2.5rem;
+  width: 49%;
+}
+
+.qa{
+  border-right: outset;
+  border-color: #C6A53A;
+  padding-top: 1rem;
+  white-space: break-spaces;
+  flex: 50%;
+ text-align: initial;
+}
+
+
+h4{
+text-align: center;
+padding-right: 5px;
+}
+
+

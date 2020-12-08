@@ -79,6 +79,7 @@ function getWorkTemplate() {
 }
 $cptWorkPermalink = get_post_field('post_name', getWorkTemplate());
 
+
 //CPT: Work
 function cpt_work() {
 	$labels = array(
@@ -132,6 +133,41 @@ function cpt_work() {
 	register_post_type( 'work', $args );
 }
 add_action( 'init', 'cpt_work', 0 );
+
+function getTeamTemplate() {
+  $cptTeamTemplate = [
+      'post_type' => 'page',
+      'fields' => 'ids',
+      'nopaging' => true,
+      'meta_key' => '_wp_page_template',
+      'meta_value' => 'archive-team.php'
+  ];
+  return get_posts($cptTeamTemplate)[0];
+}
+$cptTeamPermalink = get_post_field('post_name', getTeamTemplate());
+
+function cpt_team() {
+    $labels = array(
+      'name' => 'Team',
+      'add_new_item' => 'Add New Team',
+      'edit_item' => 'Edit Team',
+      'all_items' => 'All Teams',
+      'singular_name' => 'Team'
+    );
+    $args = array(
+		'label' => __( 'Team', 'exonym' ),
+		'labels' => $labels,
+    'show_in_rest' => true,
+		'supports' => array('title', 'editor', 'thumbnail'),
+    'rewrite' => array('slug' => 'teams'),
+		'public' => true, 
+    'has_archive' => $cptTeamPermalink,
+    'menu_icon' => 'dashicons-universal-access',
+  );
+   register_post_type('team', $args);
+}
+add_action('init', 'cpt_team', 0);
+
 
 // Redirect archives to page
 function redirect_services_archive() {
